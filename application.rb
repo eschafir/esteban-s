@@ -3,6 +3,7 @@ require 'sinatra/activerecord'
 require 'date'
 require './models/event.rb' # your models
 # require 'json' #json support
+require './models/score.rb'
 
 class MyApplication < Sinatra::Base
   register Sinatra::ActiveRecordExtension
@@ -47,6 +48,25 @@ class MyApplication < Sinatra::Base
   get '/events' do
     @list = Event.all
     erb :event_list
+  end
+
+  get '/event/:id/rate' do
+     event = Event.find(params[:id].to_i) 
+     @event_name = event.name  
+     erb :rate_event 
+  end
+
+  post '/event/:id/rate' do
+       type_rate = params[:name]
+       id= params[:id]
+       event = Event.find(id)
+       score = Score.new
+       score.event_id = event
+       score.rate = type_rate
+       score.comment = ""
+       score.save
+       @message="Your score was sent!!! Thanks!!!"
+       erb :score_sent
   end
 
 end
