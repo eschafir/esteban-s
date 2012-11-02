@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'mocha'
-require '../controllers/login_controller.rb'
+require_relative '../controllers/login_controller.rb'
 
 class LoginControllerTest < Test::Unit::TestCase
 
