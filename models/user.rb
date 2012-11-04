@@ -3,7 +3,12 @@ class User
     def initialize(username, password)
         
         @username = username
-        @password = password    
+        @password = password
+
+	if(password.size() < 8  || password.size() > 10)
+          then raise "The password should be bigger than 8 characters and smaller than 10 characters"
+	end
+	
     end
 
     def username
@@ -13,4 +18,5 @@ class User
     def password
         return @password
     end
+
 end

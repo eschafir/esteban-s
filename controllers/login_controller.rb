@@ -10,7 +10,7 @@ class LoginController
 
         return "FAIL" if (password != password_confirmation)
 
-        return "FAIL" if (password.size() < 8 || password.size() > 10)
+#        return "FAIL" if (password.size() < 8 || password.size() > 10)
 
         
         user = @user_repository.get_by_username(username)

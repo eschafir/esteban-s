@@ -1,12 +1,4 @@
 source 'http://rubygems.org'
-<<<<<<< HEAD
-
-gem "rake"
-
-group :test do
-  gem "mocha"
-
-=======
 gem 'sinatra'
 gem "unicorn"
 gem "rack"
@@ -29,5 +21,4 @@ group :test do
   gem 'rspec'
   gem 'therubyracer'
   gem "jshintrb"
->>>>>>> 3d1e63fe65df7b679bd0d715567a20b509a8dae2
 end
