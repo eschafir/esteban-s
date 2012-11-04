@@ -37,11 +37,29 @@ class UserTest < Test::Unit::TestCase
 
    def test_create_account_should_not_save_user_when_passwords_exceeds_ten_characters
 
-        # arrange
-        username = "Nicolas3"
-        password = "TheBigPass!!!"
+       # arrange
+       username = "Nicolas3"
+       password = "TheBigPass!!!"
         
-        # act
+       # act
+       begin
+       User.new(username, password)
+       rescue
+       result = "FAIL"
+       end
+ 
+       # assert
+       assert_equal("FAIL", result)
+
+   end
+
+   def test_create_account_should_not_save_user_when_password_not_have_lower_and_upper_characters
+
+       # arrange
+       username = "Nicolas4"
+       password = "password"
+        
+       # act
        begin
        User.new(username, password)
        rescue
