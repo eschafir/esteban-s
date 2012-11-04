@@ -58,5 +58,41 @@ class LoginControllerTest < Test::Unit::TestCase
         assert_equal("FAIL", result)
     end
 
+    def test_log_in_when_user_exists_and_his_password_is_correct
+      
+       # arrange
+       username = "Nicolas5"
+       password = "Password"
+
+       user_repository = mock()
+       user_repository.expects(:get_by_username).returns(User.new("Nicolas5","Password"))
+
+       controller = LoginController.new(user_repository)
+
+       #  act
+       result = controller.log_in(username, password)
+
+       #  assert
+       assert_equal("WELCOME", result)
+    end
+
+    def test_log_in_when_user_exists_and_his_password_is_incorrect
+      
+       # arrange
+       username = "Nicolas5"
+       password = "Passwor"
+
+       user_repository = mock()
+       user_repository.expects(:get_by_username).returns(User.new("Nicolas5","Password"))
+
+       controller = LoginController.new(user_repository)
+
+       #  act
+       result = controller.log_in(username, password)
+
+       #  assert
+       assert_equal("FAIL", result)
+    end
+
 end
 

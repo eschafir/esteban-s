@@ -58,36 +58,41 @@ class LoginControllerTest < Test::Unit::TestCase
         assert_equal("FAIL", result)
     end
 
-    def test_create_account_should_not_save_user_when_passwords_lenght_is_less_than_eight
+    def test_log_in_when_user_exists_and_his_password_is_correct
+      
+       # arrange
+       username = "Nicolas5"
+       password = "Password"
 
-        # arrange
-        username = "Nicolas"
-        password = "Pass"
-        password_confirmation = "Pass"
+       user_repository = mock()
+       user_repository.expects(:get_by_username).returns(User.new("Nicolas5","Password"))
 
-        controller = LoginController.new(nil)
-        
-        # act
-        result =  controller.create_account(username, password, password_confirmation)
+       controller = LoginController.new(user_repository)
 
-        # assert
-        assert_equal("FAIL", result)
+       #  act
+       result = controller.log_in(username, password)
+
+       #  assert
+       assert_equal("WELCOME", result)
     end
 
-    def test_create_account_should_not_save_user_when_passwords_exceeds_ten_characters
+    def test_log_in_when_user_exists_and_his_password_is_incorrect
+      
+       # arrange
+       username = "Nicolas5"
+       password = "Passwor"
 
-        # arrange
-        username = "Nicolas"
-        password = "TheBigPass!!!"
-        password_confirmation = "TheBigPass!!!"
+       user_repository = mock()
+       user_repository.expects(:get_by_username).returns(User.new("Nicolas5","Password"))
 
-        controller = LoginController.new(nil)
-        
-        # act
-        result =  controller.create_account(username, password, password_confirmation)
+       controller = LoginController.new(user_repository)
 
-        # assert
-        assert_equal("FAIL", result)
+       #  act
+       result = controller.log_in(username, password)
+
+       #  assert
+       assert_equal("FAIL", result)
     end
+
 end
 
