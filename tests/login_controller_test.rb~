@@ -58,5 +58,36 @@ class LoginControllerTest < Test::Unit::TestCase
         assert_equal("FAIL", result)
     end
 
+    def test_create_account_should_not_save_user_when_passwords_lenght_is_less_than_eight
+
+        # arrange
+        username = "Nicolas"
+        password = "Pass"
+        password_confirmation = "Pass"
+
+        controller = LoginController.new(nil)
+        
+        # act
+        result =  controller.create_account(username, password, password_confirmation)
+
+        # assert
+        assert_equal("FAIL", result)
+    end
+
+    def test_create_account_should_not_save_user_when_passwords_exceeds_ten_characters
+
+        # arrange
+        username = "Nicolas"
+        password = "TheBigPass!!!"
+        password_confirmation = "TheBigPass!!!"
+
+        controller = LoginController.new(nil)
+        
+        # act
+        result =  controller.create_account(username, password, password_confirmation)
+
+        # assert
+        assert_equal("FAIL", result)
+    end
 end
 

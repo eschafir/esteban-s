@@ -27,7 +27,7 @@ class UserTest < Test::Unit::TestCase
         
         # act
         begin
-       User.new(username, password)
+       User.new(usernamse, password)
        rescue
        result = "FAIL"
        end
