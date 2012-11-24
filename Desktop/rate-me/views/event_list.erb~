@@ -1,0 +1,8 @@
+<ul>
+<% @list.each do | event | %>
+
+   <li><%= event.name%> </li>
+
+<%end%>
+<dt><a href="/log_in_page" >Back</a>
+</ul>

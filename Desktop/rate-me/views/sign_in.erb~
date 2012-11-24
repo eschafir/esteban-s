@@ -1,0 +1,16 @@
+<body>
+<form method="post" action="main_page">
+<h2>Create an account!</h2>
+                  
+</br>Name:<input class="textbox" type="text" name="name" /></br>
+
+</br>Username:<input class="textbox" type="text" name="username" /></br>
+
+</br>Email:<input class="textbox" type="text" name="email" /></br>
+
+</br>Password:<input class="textbox" type="password" name="password" /></br>
+
+</br><input class="boton" type="submit" value="Continue"/></br>
+
+</form>
+</body>

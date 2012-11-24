@@ -220,6 +220,10 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
+Then /^I should see "([^"]*)" page$/ do |arg1|
+  visit '/'+arg1
+end
+
 Given /^I am viewing "([^"]*)"$/ do |arg1|
   pending # express the regexp above with the code you wish you had
 end
@@ -247,5 +251,31 @@ end
 Given /^I am in the event "([^"]*)" rate page$/ do |arg1|
   url='/event/'+arg1+'/rate'
   visit url
+end
+
+Given /^The username "([^"]*)" with password "([^"]*)" exists$/ do |arg1, arg2|
+  user = User.new
+  user.name = "Esteban"
+  user.username = arg1
+  user.password = arg2
+  user.email = "esteban.schafir@gmail.com"
+  user.save
+end
+
+Given /^I am in the log in page$/ do
+  visit '/log_in_page'
+end
+
+Given /^I am in the sign in page$/ do
+  visit '/sign_in_page'
+end
+
+Given /^The "([^"]*)" account already exists$/ do |arg1|
+    user = User.new
+  user.name = "Esteban"
+  user.username = arg1
+  user.password = ""
+  user.email = "esteban.schafir@gmail.com"
+  user.save
 end
 
